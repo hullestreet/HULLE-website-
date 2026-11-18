@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <title>HULLE — Shop, Share & Earn</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="HULLE home"><span class="brand-mark">H</span><span>HULLE</span></a>
+  <nav><a href="#shop">Shop</a><a href="#originals">HULLE Originals</a><a href="#creator">Creators</a></nav>
+  <button class="outline small" id="openAdmin">Admin / Add product</button>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">A NEW WAY TO DISCOVER & SHARE</p>
+      <h1>Find your style.<br><em>Share your finds.</em></h1>
+      <p class="hero-sub">Shop selected products and discover HULLE Originals. Creators can share products and build their own earning journey.</p>
+      <div class="hero-actions"><a class="button light" href="#shop">Explore products</a><a class="button ghost" href="#creator">Join as creator</a></div>
+      <p class="micro">Demo storefront · Free starter version</p>
+    </div>
+    <div class="hero-art">
+      <div class="art-card art-back"><span>HULLE</span><small>STYLE / EVERYDAY</small></div>
+      <div class="art-card art-front"><span class="art-h">H</span><b>OWN YOUR<br>EVERYDAY.</b><small>HULLE ORIGINALS</small></div>
+      <div class="circle-note">DISCOVER<br>MORE ↗</div>
+    </div>
+  </section>
+
+  <section class="ticker"><span>HULLE ORIGINALS</span><span>•</span><span>PARTNER FINDS</span><span>•</span><span>CREATOR COMMUNITY</span><span>•</span><span>HULLE ORIGINALS</span></section>
+
+  <section class="section" id="shop">
+    <div class="section-head"><div><p class="eyebrow dark">THE MARKETPLACE</p><h2>Shop the edit.</h2></div><p class="muted">Explore HULLE products and affiliate partner picks in one place.</p></div>
+    <div class="filters">
+      <button class="filter active" data-filter="all">All products</button>
+      <button class="filter" data-filter="original">HULLE Originals</button>
+      <button class="filter" data-filter="affiliate">Affiliate picks</button>
+    </div>
+    <div id="products" class="product-grid"></div>
+    <p id="emptyState" class="empty hidden">No products in this section yet. Add a product from the admin panel.</p>
+  </section>
+
+  <section class="originals" id="originals">
+    <div class="original-image"><div class="giant-h">H</div><span>HULLE / ORIGINALS</span></div>
+    <div class="original-copy"><p class="eyebrow">MADE FOR YOUR EVERYDAY</p><h2>Not just a label.<br><em>Your own identity.</em></h2><p>HULLE Originals is your own clothing line. Add your designs, sizes, colours, stock and pricing separately from affiliate products.</p><a class="button dark" href="#shop" data-original-filter>Explore originals</a></div>
+  </section>
+
+  <section class="creator" id="creator">
+    <div><p class="eyebrow">FOR THE CREATORS</p><h2>Your taste.<br>Your community.<br><em>Your opportunity.</em></h2><p>Register as a HULLE creator, share approved product links and track your demo referrals.</p></div>
+    <form id="creatorForm" class="creator-form">
+      <h3>Join the creator community</h3>
+      <label>Your name<input name="name" required placeholder="Your name"></label>
+      <label>Instagram / social handle<input name="handle" required placeholder="@yourhandle"></label>
+      <label>Contact number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label>
+      <button class="button light full" type="submit">Submit registration</button>
+      <p class="form-note">Demo only: registration is saved in this browser, not sent to a server.</p>
+      <div id="creatorMessage" class="success hidden"></div>
+    </form>
+  </section>
+
+  <section class="section how">
+    <p class="eyebrow dark">HOW HULLE WORKS</p><h2>One platform. Two kinds of products.</h2>
+    <div class="how-grid">
+      <article><span>01</span><h3>HULLE Originals</h3><p>Your own clothing products. You manage stock, pricing, packing, delivery and returns.</p></article>
+      <article><span>02</span><h3>Affiliate picks</h3><p>Products linked to an approved affiliate programme. The customer completes purchase on the partner platform.</p></article>
+      <article><span>03</span><h3>Creator sharing</h3><p>Creators can share product links. Real commission attribution requires partner tracking and a connected backend.</p></article>
+    </div>
+  </section>
+</main>
+
+<footer><a class="brand" href="#"><span class="brand-mark">H</span><span>HULLE</span></a><span>Shop thoughtfully. Share confidently.</span><span>© <span id="year"></span> HULLE</span></footer>
+
+<div class="modal hidden" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+  <div class="modal-card">
+    <button class="close" id="closeAdmin" aria-label="Close">×</button>
+    <p class="eyebrow dark">DEMO ADMIN PANEL</p><h2 id="adminTitle">Add a product</h2>
+    <p class="muted small-text">Choose whether this is your own HULLE product or an affiliate partner product.</p>
+    <form id="productForm">
+      <label>Product type<select name="type"><option value="original">HULLE Original</option><option value="affiliate">Affiliate product</option></select></label>
+      <label>Product name<input name="name" required placeholder="e.g. HULLE Oversized Tee"></label>
+      <div class="two">
+        <label>Price (₹)<input name="price" type="number" min="0" required placeholder="599"></label>
+        <label>Category<input name="category" required placeholder="Clothing"></label>
+      </div>
+      <label>Image URL (optional)<input name="image" type="url" placeholder="https://..."></label>
+      <label id="affiliateLinkWrap" class="hidden">Affiliate tracking link<input name="link" type="url" placeholder="Paste your approved affiliate URL"></label>
+      <label>Description<textarea name="description" rows="3" placeholder="Short product description"></textarea></label>
+      <button class="button dark full" type="submit">Add product</button>
+      <p class="form-note">This starter demo stores products in this browser only. Do not enter private API keys here.</p>
+      <div id="productMessage" class="success hidden"></div>
+    </form>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
